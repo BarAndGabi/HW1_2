@@ -56,21 +56,17 @@
                 Array.Sort(row, (s1, s2) => s1.Grades.Count.CompareTo(s2.Grades.Count));
             }
         }
-        public static void Print<T>(IEnumerable<T> groups) where T : Group
+
+        public static void Print(Student[][] mat)
+{
+    foreach (var studentArray in mat)
+    {
+        foreach (var student in studentArray)
         {
-            foreach (var group in groups)
-            {
-                Console.WriteLine($"Group number: {group.Number}, Name: {group.Name}");
-                Console.WriteLine("Students:");
-                var enumerator = group.Students.GetEnumerator();
-                while (enumerator.MoveNext())
-                {
-                    Console.WriteLine($"\t{enumerator.Current.Id}\t{enumerator.Current.Name}");
-                }
-            }
+            Console.WriteLine(student.ToString());
         }
-
-
+    }
+}
         public static void PrintGroups(List<Group> groups)
         {
             foreach (var group in groups)
