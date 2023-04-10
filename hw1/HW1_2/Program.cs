@@ -47,6 +47,7 @@
                 groups.Add(group);
                 i++;
             }
+
             PrintGroups(groups);
         }
         public static void Sort(Student[][] mat)
