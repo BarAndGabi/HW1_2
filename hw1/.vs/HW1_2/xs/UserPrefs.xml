@@ -1,16 +1,8 @@
 ﻿<Properties StartupConfiguration="{1D4BC6DD-4A50-40E4-9F4D-E81902D6E88D}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.HW1__2 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/barmoshe/HW1_2/hw1/HW1_2/Program.cs" relfile="HW1_2/Program.cs" line="49" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="HW1_2/Program.cs">
     <Files>
-      <File FileName="HW1_2/Program.cs" Line="84" Column="1" />
-      <File FileName="HW1_2/Group.cs" Line="18" Column="1" />
+      <File FileName="HW1_2/Program.cs" Line="57" Column="14" />
+      <File FileName="HW1_2/Group.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,5 +16,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.HW1__2 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

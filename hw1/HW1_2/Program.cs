@@ -30,21 +30,15 @@
 
         };
 
-            List<Group> groups = new List<Group>();
-            int i = 0;
-            foreach (Student[] row in mat)
+            List<Group> groups = mat.Select((row, i) => new Group
             {
-                Group group = new Group
-                {
-                    number = row[0].Id,
-                    name = $"Group g{i + 1}",
-                    students = row.ToList()
-                };
-                groups.Add(group);
-                i++;
-            }
+                number = i + 1,
+                name = $"Group g{i + 1}",
+                students = row.ToList()
+            }).ToList();
 
-            PrintGroups(groups);
+
+            print(groups);
             getSelection(mat, groups);
         }
         public static void sort(Student[][] mat)
@@ -60,21 +54,20 @@
             foreach (var studentArray in mat)
             {
                 Console.WriteLine(string.Join("\n", studentArray.Select(student => student.ToString())));
+                Console.WriteLine("---------------");
             }
         }
-        public static void PrintGroups(List<Group> groups)
+
+        //generic print method for list using  IEnumerator
+        public static void print<T>(List<T> list)
         {
-            foreach (var group in groups)
+            IEnumerator<T> enumerator = list.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                Console.WriteLine($"Group number: {group.number}, Group name: {group.name}");
-                Console.WriteLine("Students:");
-                foreach (var student in group.students)
-                {
-                    Console.WriteLine($"Id: {student.Id}, Name: {student.Name}, Grades: {string.Join(",", student.Grades)}");
-                }
-                Console.WriteLine();
+                Console.WriteLine(enumerator.Current);
             }
         }
+
         //function to print menu
         public static void printMenu()
         {
@@ -103,7 +96,7 @@
                         print(mat);
                         break;
                     case 2:
-                        PrintGroups(groups);
+                        print(groups);
                         break;
                     case 3:
                         printGroupWithMostStudentsWithoutGrades(groups);
@@ -168,7 +161,7 @@
             {
                 foreach (var student in studentArray)
                 {
-                    if (!students.Any(s => s.Name.ToLower() == student.Name.ToLower() && s.Grades.SequenceEqual(student.Grades)))
+                    if (!students.Any(s => s.Name.ToLower() == student.Name.ToLower() && mySequenceEqual(s.Grades, student.Grades)))
                     {
                         students.Add(student);
                     }
@@ -180,8 +173,28 @@
                 Console.WriteLine($"Id: {student.Id}, Name: {student.Name}, Grades: {string.Join(",", student.Grades)}");
             }
         }
+        public static bool mySequenceEqual<T>(IEnumerable<T> first, IEnumerable<T> second)
+        {
+            if (first == null || second == null)
+            {
+                return first == null && second == null;
+            }
 
-     
+            var firstEnumerator = first.GetEnumerator();
+            var secondEnumerator = second.GetEnumerator();
+
+            while (firstEnumerator.MoveNext())
+            {
+                if (!secondEnumerator.MoveNext() || !Equals(firstEnumerator.Current, secondEnumerator.Current))
+                {
+                    return false;
+                }
+            }
+
+            return !secondEnumerator.MoveNext();
+        }
+
+
         //print Student With Most Grades Above 100
         public static void printStudentWithMostGradesAbove100(Student[][] mat)
         {
@@ -224,8 +237,8 @@
             }
             Console.WriteLine(students.Count);
         }
-         //create Dictionary of students name no case sensitive and as value the count the number of student with the same name
-         //TO DO
+        //create Dictionary of students name no case sensitive and as value the count the number of student with the same name
+        //TO DO
         public static void printNumberOfGradesForEachStudent(Student[][] mat)
         {
             Dictionary<string, int> students = new Dictionary<string, int>();
@@ -247,7 +260,7 @@
             {
                 Console.WriteLine($"{student.Key} : {student.Value}");
             }
-                
+
         }
 
 
