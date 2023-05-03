@@ -115,6 +115,7 @@
                         break;
                     case 8:
                         Console.WriteLine("Bye Bye");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Wrong selection");
